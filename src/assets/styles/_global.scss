@@ -1,0 +1,12 @@
+@import "./variables";
+@import "./colors";
+@import "./fonts";
+@import "./button";
+
+
+body,html{
+    background: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    color: $textPrimary;
+}
+
