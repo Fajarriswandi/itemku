@@ -1,12 +1,179 @@
 @import "./variables";
 @import "./colors";
 @import "./fonts";
+@import "./helper";
 @import "./button";
 
-
 body,html{
-    background: #f9f9f9;
+    background: #F4F4F4;
     font-family: 'Roboto', sans-serif;
     color: $textPrimary;
+    overflow-x: hidden;
 }
 
+.containerApp{
+    background: white;
+    max-width: 600px;
+    height: 100vh;
+    overflow-y: auto;
+    margin: 0 auto;
+    @extend .shadow-sm ;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.statusBar{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    z-index: 9000;
+    ul{
+        list-style: none;
+        padding: 0;
+        display: flex;
+        margin: 0 0 0 auto;
+        li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px 10px;
+            .feather{
+                width: 15px;
+            }
+            span{
+                font-size: 12px;
+                line-height: 100%;
+            }
+        }
+    }
+}
+
+.logo{
+    display: block;
+    border-bottom: 1px solid $borderColor;
+    img{
+        width: 100px;
+        margin: 0 0 0 20px;
+    }
+}
+
+.listProduct{
+    // border-top: 1px solid $borderColor;
+    // border-bottom: 1px solid $borderColor;
+    padding: 10px 0;
+    overflow-x: hidden;
+    .title{
+        font-size: 18px;
+        font-weight: bold;
+        display: table;
+        margin-left: 20px;
+        margin-bottom: 5px;
+    }
+    .listContainer{
+        overflow-y: auto;
+        ul{
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0 -5px;
+            padding-left: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            li{
+                padding:8px 8px;
+                margin-bottom: 10px;
+                a{
+                    width: 200px;
+                    display: table;
+                    min-height: 290px;
+                    background: white;
+                    border: 1px solid $borderColor;
+                    border-radius: $radius;
+                    text-decoration: none;
+                    color: $textPrimary;
+                    @extend .shadow-sm;
+                    position: relative;
+                    transition: 0.2s ease;
+                    img{
+                        width: 100%;
+                        height: 80px;
+                        object-fit: cover;
+
+                        border-top-left-radius: 10px;
+                        border-top-right-radius: 10px;
+                    }
+                    .content{
+                        padding: 12px;
+                        .titleProduct{
+                            font-size: 14px;
+                            font-weight: bold;
+                            margin-bottom: 2px;
+                        }
+                        .subtitle{
+                            font-size: 11px;
+                            margin-bottom: 15px;
+                            opacity: 0.7;
+                        }
+                        .stock{
+                            border: 1px solid green;
+                            color: green;
+                            display: table;
+                            font-size: 11px;
+                            padding: 3px 5px;
+                            border-radius: 5px;
+                            margin-bottom: 5px;
+                        }
+                        .discount{
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            margin-bottom: 10px;
+                            span{
+                                background: red;
+                                color: white;
+                                font-size: 11px;
+                                padding: 3px 5px;
+                                border-radius: 5px;
+                                margin-right: 3px;
+                            }
+                            small{
+                                text-decoration: line-through;
+                                opacity: 0.5;
+                                font-size: 11px;
+                            }
+                        }
+                        .price{
+                            color: #EF6000;
+                            font-weight: bold;
+                            margin-bottom: 10px;
+                        }
+                        .deliveryTime{
+                            background: #D4EDDA;
+                            color: #4f8670;
+                            font-size: 11px;
+                            padding: 3px 5px;
+                            display: table;
+                            border-radius: 5px;
+                        }
+                    }
+                    .productShold{
+                        font-size: 11px;
+                        opacity: 0.8;
+                        padding: 10px 12px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                    }
+                    &:hover{
+                        @extend .shadow;
+                    }
+                }
+            }
+        }
+    }
+}

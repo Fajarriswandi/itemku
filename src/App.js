@@ -1,7 +1,5 @@
 import React from "react";
-import Button from "./components/Button.js";
 import './App.scss';
-import Logo from "./assets/img/logo.svg";
 import Home from "./pages/home";
 
 import {
@@ -14,11 +12,8 @@ export default function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/about">
+        <Route path="/detail">
           About
-        </Route>
-        <Route path="/users">
-          User
         </Route>
         <Route path="/">
           <Home />
