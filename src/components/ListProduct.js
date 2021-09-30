@@ -21,13 +21,13 @@ export default function ListProduct(props) {
 
     const [data] = useState(props.data);
 
-    let options = data.map(data => (
+    let item = data.map(data => (
         <a href={"detail/" + data.id} key={data.id}>
             <img src={data.thumbnail} alt={data.title} />
             <div className="content">
                 <div className="titleProduct">{data.title}</div>
                 <div className="subtitle">{data.subtitle}</div>
-                <div className="stock">Stock {data.stock}</div>
+                <div className={`stock ${data.stockStatus ? "" : "limited"}`}>Stock {data.stock}</div>
                 <div className="discount"><span>{data.discountPercent}</span><small>Rp{data.discountPrice}</small></div>
                 <div className="price">Rp{data.price}</div>
                 <div className="deliveryTime">{data.deliveryTime}</div>
@@ -37,14 +37,15 @@ export default function ListProduct(props) {
 
     ));
 
-
     return (
-        <Carousel responsive={responsive} className="listContainer"
+        <Carousel
+            responsive={responsive}
+            className="listContainer"
             arrows={true}
             draggable={true}
             swipeable={true}
         >
-            {options}
+            {item}
 
         </Carousel>
     );

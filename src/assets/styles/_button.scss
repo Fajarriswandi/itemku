@@ -2,6 +2,8 @@ button{
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
+    transition: 0.2s ease;
+    cursor: pointer;
     &.btn-danger{
         background: red;
         color: white;
@@ -10,10 +12,23 @@ button{
         background: $secondary;
         color: white;
     }
+    &.btn-secondary{
+        background: $secondary;
+        color: white;
+        &:hover{
+            background: #b34700;
+        }
+    }
     &.btn-sm{
         padding: 5px 10px;
     }
     &.btn-lg{
         padding: 15px 20px;
+    }
+    &.display-table{
+        display: table;
+    }
+    &.display-block{
+        display: block;
     }
 }
