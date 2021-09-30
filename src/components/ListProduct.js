@@ -1,9 +1,6 @@
-import React from "react"
+import React, { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import FeatherIcon from 'feather-icons-react';
-import Thumbnail from "../assets/img/thumbnail.jpg";
-
 
 const responsive = {
     desktop: {
@@ -20,98 +17,36 @@ const responsive = {
     }
 };
 
-export default function ListProduct() {
-    return (
-        <div className="listProduct">
-            <div className="title">Termurah di seluru indonesia</div>
+export default function ListProduct(props) {
 
-            <Carousel responsive={responsive} className="listContainer"
-            additionalTransfrom={0}
-            arrows
-            autoPlaySpeed={3000}
-            centerMode={false}
-            containerClass="container"
-            draggable
-            focusOnSelect={false}
-            keyBoardControl
-            minimumTouchDrag={80}
-            renderButtonGroupOutside={false}
-            renderDotsOutside={false}
-            showDots={false}
-            slidesToSlide={1}
-            swipeable
-            >
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">Ticket Rp 199000</div>
-                        <div className="subtitle">Saga of Skywalkers</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="price">Rp129.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">600 UC</div>
-                        <div className="subtitle">PUBG Mobile</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="discount"><span>99%</span><small>Rp200.000</small></div>
-                        <div className="price">Rp100.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">Ticket Rp 199000</div>
-                        <div className="subtitle">Saga of Skywalkers</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="price">Rp129.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">600 UC</div>
-                        <div className="subtitle">PUBG Mobile</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="discount"><span>99%</span><small>Rp200.000</small></div>
-                        <div className="price">Rp100.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">Ticket Rp 199000</div>
-                        <div className="subtitle">Saga of Skywalkers</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="price">Rp129.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-                <a href="/detail">
-                    <img src={Thumbnail} alt="Thumbnail" />
-                    <div className="content">
-                        <div className="titleProduct">600 UC</div>
-                        <div className="subtitle">PUBG Mobile</div>
-                        <div className="stock">Stock 999+</div>
-                        <div className="discount"><span>99%</span><small>Rp200.000</small></div>
-                        <div className="price">Rp100.900</div>
-                        <div className="deliveryTime">10 Menit kirim</div>
-                    </div>
-                    <div className="productShold">1000 produk terjual</div>
-                </a>
-            </Carousel>
-        </div>
+    const [data] = useState(props.data);
+
+    let options = data.map(data => (
+        <a href={"detail/" + data.id} key={data.id}>
+            <img src={data.thumbnail} alt={data.title} />
+            <div className="content">
+                <div className="titleProduct">{data.title}</div>
+                <div className="subtitle">{data.subtitle}</div>
+                <div className="stock">Stock {data.stock}</div>
+                <div className="discount"><span>{data.discountPercent}</span><small>Rp{data.discountPrice}</small></div>
+                <div className="price">Rp{data.price}</div>
+                <div className="deliveryTime">{data.deliveryTime}</div>
+            </div>
+            <div className="productShold">{data.shold} Produk terjual</div>
+        </a>
+
+    ));
+
+
+    return (
+        <Carousel responsive={responsive} className="listContainer"
+            arrows={true}
+            draggable={true}
+            swipeable={true}
+        >
+            {options}
+
+        </Carousel>
     );
 }
 

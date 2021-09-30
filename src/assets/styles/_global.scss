@@ -4,25 +4,27 @@
 @import "./helper";
 @import "./button";
 
-body,html{
-    background: #F4F4F4;
-    font-family: 'Roboto', sans-serif;
+body,
+html {
+    background: #f4f4f4;
+    font-family: "Roboto", sans-serif;
     color: $textPrimary;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-.containerApp{
+.containerApp {
     background: white;
     max-width: 600px;
     height: 100vh;
     overflow-y: auto;
     margin: 0 auto;
-    @extend .shadow-sm ;
+    @extend .shadow-sm;
     position: relative;
     overflow-x: hidden;
 }
 
-.statusBar{
+.statusBar {
     display: flex;
     justify-content: flex-end;
     padding-right: 20px;
@@ -32,20 +34,20 @@ body,html{
     width: 100%;
     background: white;
     z-index: 9000;
-    ul{
+    ul {
         list-style: none;
         padding: 0;
         display: flex;
         margin: 0 0 0 auto;
-        li{
+        li {
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 5px 10px;
-            .feather{
+            .feather {
                 width: 15px;
             }
-            span{
+            span {
                 font-size: 12px;
                 line-height: 100%;
             }
@@ -53,30 +55,28 @@ body,html{
     }
 }
 
-.logo{
+.logo {
     display: block;
     border-bottom: 1px solid $borderColor;
-    img{
+    img {
         width: 100px;
         margin: 0 0 0 20px;
     }
 }
 
-.listProduct{
-    // border-top: 1px solid $borderColor;
-    // border-bottom: 1px solid $borderColor;
+.listProduct {
     padding: 10px 0;
     overflow-x: hidden;
-    .title{
+    .title {
         font-size: 18px;
         font-weight: bold;
         display: table;
         margin-left: 20px;
         margin-bottom: 5px;
     }
-    .listContainer{
+    .listContainer {
         overflow-y: auto;
-        ul{
+        ul {
             list-style: none;
             padding: 0;
             margin: 0 0 0 -5px;
@@ -84,10 +84,10 @@ body,html{
             width: 100%;
             display: flex;
             flex-direction: row;
-            li{
-                padding:8px 8px;
+            li {
+                padding: 8px 8px;
                 margin-bottom: 10px;
-                a{
+                a {
                     width: 200px;
                     display: table;
                     min-height: 290px;
@@ -99,7 +99,7 @@ body,html{
                     @extend .shadow-sm;
                     position: relative;
                     transition: 0.2s ease;
-                    img{
+                    img {
                         width: 100%;
                         height: 80px;
                         object-fit: cover;
@@ -107,19 +107,19 @@ body,html{
                         border-top-left-radius: 10px;
                         border-top-right-radius: 10px;
                     }
-                    .content{
+                    .content {
                         padding: 12px;
-                        .titleProduct{
+                        .titleProduct {
                             font-size: 14px;
                             font-weight: bold;
                             margin-bottom: 2px;
                         }
-                        .subtitle{
+                        .subtitle {
                             font-size: 11px;
                             margin-bottom: 15px;
                             opacity: 0.7;
                         }
-                        .stock{
+                        .stock {
                             border: 1px solid green;
                             color: green;
                             display: table;
@@ -128,32 +128,32 @@ body,html{
                             border-radius: 5px;
                             margin-bottom: 5px;
                         }
-                        .discount{
+                        .discount {
                             display: flex;
                             justify-content: flex-start;
                             align-items: center;
                             margin-bottom: 10px;
-                            span{
-                                background: red;
+                            span {
+                                background: #f33030;
                                 color: white;
                                 font-size: 11px;
                                 padding: 3px 5px;
                                 border-radius: 5px;
                                 margin-right: 3px;
                             }
-                            small{
+                            small {
                                 text-decoration: line-through;
                                 opacity: 0.5;
                                 font-size: 11px;
                             }
                         }
-                        .price{
-                            color: #EF6000;
+                        .price {
+                            color: #ef6000;
                             font-weight: bold;
                             margin-bottom: 10px;
                         }
-                        .deliveryTime{
-                            background: #D4EDDA;
+                        .deliveryTime {
+                            background: #d4edda;
                             color: #4f8670;
                             font-size: 11px;
                             padding: 3px 5px;
@@ -161,7 +161,7 @@ body,html{
                             border-radius: 5px;
                         }
                     }
-                    .productShold{
+                    .productShold {
                         font-size: 11px;
                         opacity: 0.8;
                         padding: 10px 12px;
@@ -169,11 +169,220 @@ body,html{
                         bottom: 0;
                         left: 0;
                     }
-                    &:hover{
+                    &:hover {
                         @extend .shadow;
                     }
                 }
             }
         }
     }
+}
+
+.detailPage {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        width: 0;
+        background: transparent;
+    }
+    .content {
+        background: #f4f4f4;
+        padding-bottom: 2px;
+        header {
+            position: relative;
+            .detailNav {
+                display: flex;
+                justify-content: space-between;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                @include gradientBlackVertical();
+                padding: 20px 0;
+                div {
+                    padding: 0 20px;
+                    &:nth-child(2) {
+                        a {
+                            margin-left: 15px;
+                        }
+                    }
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border-radius: $radius-sm;
+                        background: rgba(0, 0, 0, 0.342);
+                        color: white;
+                        width: 40px;
+                        height: 40px;
+                        float: left;
+                        transition: 0.2s ease;
+                        .feather {
+                            width: 20px;
+                        }
+                        &:hover {
+                            background: $secondary;
+                        }
+                    }
+                }
+            }
+            img {
+                width: 100%;
+                height: 250px;
+                object-fit: cover;
+            }
+        }
+        section {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            position: relative;
+            .title {
+                font-weight: bold;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            &.detailPrice {
+                .titleProduct {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-bottom: 2px;
+                }
+                .subtitle {
+                    font-size: 14px;
+                    margin-bottom: 15px;
+                    opacity: 0.7;
+                }
+                .stock {
+                    border: 1px solid green;
+                    color: green;
+                    display: table;
+                    font-size: 11px;
+                    padding: 3px 5px;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                }
+                .discount {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    span {
+                        background: #f33030;
+                        color: white;
+                        font-size: 14px;
+                        padding: 3px 5px;
+                        border-radius: 5px;
+                        margin-right: 3px;
+                    }
+                    small {
+                        text-decoration: line-through;
+                        opacity: 0.8;
+                        font-size: 14px;
+                    }
+                }
+                .price {
+                    font-size: 25px;
+                    color: #ef6000;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                    display: flex;
+                    align-items: center;
+                    span {
+                        color: $textPrimary;
+                        font-size: 12px;
+                        opacity: 0.8;
+                        padding-bottom: 2px;
+                        margin-left: 5px;
+                        font-weight: normal;
+                    }
+                }
+                .deliveryTime {
+                    background: #d4edda;
+                    color: #4f8670;
+                    font-size: 11px;
+                    padding: 3px 5px;
+                    display: table;
+                    border-radius: 5px;
+                }
+            }
+            .description {
+                font-size: 14px;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.wrapperWishlist {
+    display: table;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    .icon-wishlist {
+        cursor: pointer;
+        width: 22px;
+        height: 22px;
+        background: url("../img/wishlistOutline.svg") no-repeat center center;
+        background-size: cover;
+        &:hover {
+            opacity: 1;
+        }
+
+        &.in-wishlist {
+            opacity: 1;
+            animation-name: scaleAnim;
+            animation-duration: 500ms;
+            background: url("../img/wishlistFilled.svg") no-repeat center center;
+            background-size: cover;
+        }
+    }
+
+    @keyframes scaleAnim {
+        0% {
+            transform: scale(1);
+        }
+        25% {
+            transform: scale(0.7);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+}
+
+.description {
+    width: 100%;
+    margin: 0 0 1em 0;
+    overflow: hidden;
+    height: 35px;
+    position: relative;
+    transition: 0.2s ease;
+    p {
+        margin: 0;
+        line-height: 140%;
+    }
+    &.line-clamp {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+    &.full {
+        display: table;
+        -webkit-line-clamp: 0;
+        -webkit-box-orient: vertical;
+        height: auto;
+    }
+}
+
+.readMoreDesc {
+    color: $primary;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 0;
+    display: table;
+    margin: 0 0 0 auto;
 }

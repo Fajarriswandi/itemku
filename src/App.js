@@ -1,6 +1,7 @@
 import React from "react";
 import './App.scss';
 import Home from "./pages/home";
+import Detail from "./pages/detail";
 
 import {
   BrowserRouter as Router,
@@ -13,7 +14,7 @@ export default function App() {
     <Router>
       <Switch>
         <Route path="/detail">
-          About
+          <Detail />
         </Route>
         <Route path="/">
           <Home />
